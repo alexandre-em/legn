@@ -1,11 +1,11 @@
 import React from 'react'
 
-function ChordSheet() {
+function NotFound() {
     return (
         <div>
-           Sheet 
+            Not Found
         </div>
     )
 }
 
-export default ChordSheet
+export default NotFound

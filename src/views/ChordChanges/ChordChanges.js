@@ -7,6 +7,7 @@ function ChordChanges() {
 
     useEffect(() => {
         setup()
+        // eslint-disable-next-line
     }, [])
 
     const setup = async () => {

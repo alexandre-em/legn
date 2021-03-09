@@ -1,0 +1,39 @@
+.header {
+  background-color: skyblue;
+  display: flex;
+  flex: 0.05;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.profile {
+    padding-right: 1%;
+}
+
+.header > .logo > .MuiSvgIcon-root {
+  padding: 5px;
+  border-radius: 25px;
+  transition: 210ms;
+  color: rgb(231, 231, 231);
+}
+.header > .logo > .MuiSvgIcon-root:hover,
+.header > .logo > .MuiSvgIcon-root:focus {
+  background-color: rgba(99, 99, 99, 0.164);
+}
+
+.searchbar {
+    width: 40%;
+}
+
+#header--searchbar {
+    padding: 8px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
