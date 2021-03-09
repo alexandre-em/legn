@@ -6,13 +6,19 @@
   justify-content: space-between;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-}
-
 .profile {
-    padding-right: 1%;
+  display: flex;
+  align-items: center;
+}
+.profile > .MuiSvgIcon-root {
+  padding: 8px;
+  border-radius: 25px;
+  transition: 210ms;
+  color: rgb(231, 231, 231);
+  cursor: pointer;
+}
+.profile > .MuiSvgIcon-root:hover {
+  background-color: rgba(99, 99, 99, 0.164);
 }
 
 .header > .logo > .MuiSvgIcon-root {
@@ -20,6 +26,7 @@
   border-radius: 25px;
   transition: 210ms;
   color: rgb(231, 231, 231);
+  cursor: pointer;
 }
 .header > .logo > .MuiSvgIcon-root:hover,
 .header > .logo > .MuiSvgIcon-root:focus {
@@ -27,13 +34,13 @@
 }
 
 .searchbar {
-    width: 40%;
+  width: 40%;
 }
 
 #header--searchbar {
-    padding: 8px;
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    outline: none;
+  padding: 8px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  outline: none;
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import "./Header.css"
-import { NavigateBefore, NavigateNext } from "@material-ui/icons/"
-import { Avatar } from '@material-ui/core'
+import { NavigateBefore, NavigateNext, ExitToApp } from "@material-ui/icons/"
 
 function Header() {
     return (
@@ -9,13 +8,13 @@ function Header() {
             <div className="logo">
                 <NavigateBefore onClick={() => { console.log("before") }} />
                 <NavigateNext onClick={() => { console.log("next") }} />
-                Logo
             </div>
             <div className="searchbar">
                 <input type="search" placeholder="Search..." id="header--searchbar" />
             </div>
             <div className="profile">
-                <Avatar />
+                <b>Leg(n)</b>
+                <ExitToApp />
             </div>
         </div>
     )

@@ -8,23 +8,27 @@ import Settings from "./views/Settings/Settings"
 import NotFound from "./views/NotFound/NotFound"
 import { createBrowserHistory } from "history";
 import Header from "./components/Header/Header";
+import Menu from "./components/Body/Menu/Menu";
 
 function App() {
   const history = createBrowserHistory()
   return (
     <div className="App">
       <Header />
-      <Router history={history}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/changes" component={ChordChanges} />
-          <Route path="/sheet" component={ChordSheet} />
-          <Route path="/sheet/add" component={AddSheet} />
-          <Route path="/scales" component={Scales} />
-          <Route path="/settings" component={Settings} />
-          <Route component={NotFound} />
-        </Switch>
-      </Router>
+      <div className="body">
+        <Menu />
+        <Router history={history}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/changes" component={ChordChanges} />
+            <Route path="/sheet" component={ChordSheet} />
+            <Route path="/sheet/add" component={AddSheet} />
+            <Route path="/scales" component={Scales} />
+            <Route path="/settings" component={Settings} />
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 }

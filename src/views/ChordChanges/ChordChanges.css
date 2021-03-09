@@ -1,0 +1,60 @@
+.cc {
+    background-color: slateblue;
+    display: flex;
+    flex: 1;
+}
+
+.cc__main {
+    flex: .7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rosybrown;
+}
+.cc__option {
+    flex: .3;
+    display: flex;
+    flex-direction: column;
+    background-color: sandybrown;
+}
+
+.main__cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: salmon;
+    height: 100%;
+}
+
+.cc__main > h3 {
+    flex: .35;
+    display: flex;
+    align-items: center;
+}
+
+.main__current {
+    flex: .75;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main__current > h1 {
+    font-size: 5rem;
+}
+.main__current > h4 {
+    font-size: 1.3rem;
+    display: flex;
+}
+.main__current__pitch--found{
+    color: skyblue;
+}
+
+.main__next {
+   flex: .25;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 35%;
+}
