@@ -1,9 +1,10 @@
 .header {
-  background-color: skyblue;
+  background-color: #2f3841; 
   display: flex;
   flex: 0.05;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .profile {
@@ -43,4 +44,10 @@
   border: none;
   border-radius: 5px;
   outline: none;
+}
+
+@media (max-width: 190px) {
+  #header--searchbar {
+    display: none;
+  }
 }

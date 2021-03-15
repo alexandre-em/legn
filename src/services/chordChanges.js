@@ -21,14 +21,4 @@ const selectPitches = (pitches, option) => {
     })
 }
 
-const getScale = (root, tone) => {
-    const rootCode = root.charCodeAt(0)-65;
-    return tone.map( (pitch, i) => {
-        const note = ((rootCode + i)%7)+65
-        if(pitch.includes("♭"))
-            return String.fromCharCode(note) + "♭"
-        return String.fromCharCode(note)
-    })
-}
-
 export { getPitches, selectPitches }

@@ -13,7 +13,7 @@ function Header() {
                 <input type="search" placeholder="Search..." id="header--searchbar" />
             </div>
             <div className="profile">
-                <b>Leg(n)</b>
+                {/* <b>Leg(n)</b> */}
                 <ExitToApp />
             </div>
         </div>
