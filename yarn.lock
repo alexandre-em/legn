@@ -2401,6 +2401,11 @@ accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
     mime-types "~2.1.24"
     negotiator "0.6.2"
 
+accidental-value@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/accidental-value/-/accidental-value-1.0.0.tgz#9d08753a8ce5f8a7e0b491579ef5c1e01889e80f"
+  integrity sha1-nQh1Oozl+KfgtJFXnvXB4BiJ6A8=
+
 acorn-globals@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/acorn-globals/-/acorn-globals-6.0.0.tgz#46cdd39f0f8ff08a876619b55f5ac8a6dc770b45"
@@ -4313,6 +4318,11 @@ d@1, d@^1.0.1:
     es5-ext "^0.10.50"
     type "^1.0.1"
 
+daccord@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/daccord/-/daccord-1.1.0.tgz#36f0f39ab1f575f7709dd97d36ffe6d88b78d1b4"
+  integrity sha1-NvDzmrH1dfdwndl9Nv/m2It40bQ=
+
 damerau-levenshtein@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/damerau-levenshtein/-/damerau-levenshtein-1.0.6.tgz#143c1641cb3d85c60c32329e26899adea8701791"
@@ -5941,6 +5951,14 @@ he@^1.2.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
+helmholtz@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/helmholtz/-/helmholtz-2.0.2.tgz#54630621bd87575b0c2bd9147087a79a8fe30811"
+  integrity sha1-VGMGIb2HV1sMK9kUcIenmo/jCBE=
+  dependencies:
+    accidental-value "^1.0.0"
+    notecoord "^1.0.1"
+
 hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
@@ -6341,6 +6359,11 @@ internmap@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/internmap/-/internmap-1.0.0.tgz#3c6bf0944b0eae457698000412108752bbfddb56"
   integrity sha512-SdoDWwNOTE2n4JWUsLn4KXZGuZPjPF9yyOGc8bnfWnBQh7BD/l80rzSznKc/r4Y0aQ7z3RTk9X+tV4tHBpu+dA==
+
+interval-coords@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/interval-coords/-/interval-coords-1.1.1.tgz#4a83a402146d95a4db062c129b79cb34a7ecddc9"
+  integrity sha1-SoOkAhRtlaTbBiwSm3nLNKfs3ck=
 
 ip-regex@^2.1.0:
   version "2.1.0"
@@ -8196,6 +8219,11 @@ normalize-url@^3.0.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
 
+notecoord@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/notecoord/-/notecoord-1.1.0.tgz#89c42ab7bb5796a29f3c7fade9825c509d8f1ed1"
+  integrity sha1-icQqt7tXlqKfPH+t6YJcUJ2PHtE=
+
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
@@ -8718,6 +8746,11 @@ pirates@^4.0.1:
   integrity sha512-WuNqLTbMI3tmfef2TKxlQmAiLHKtFhlsCZnPIpuv2Ow0RDVO8lfy1Opf4NUzlMXLjPl+Men7AuVdX6TA+s+uGA==
   dependencies:
     node-modules-regexp "^1.0.0"
+
+pitch-fq@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/pitch-fq/-/pitch-fq-1.0.0.tgz#651b3e8852f65b9555f3a28f7ae96f11e3533416"
+  integrity sha1-ZRs+iFL2W5VV86KPeulvEeNTNBY=
 
 pkg-dir@^2.0.0:
   version "2.0.0"
@@ -10428,6 +10461,14 @@ schema-utils@^3.0.0:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
+scientific-notation@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/scientific-notation/-/scientific-notation-1.0.2.tgz#ccea3954fe2a979d3641c963acd99e5733639182"
+  integrity sha1-zOo5VP4ql502QcljrNmeVzNjkYI=
+  dependencies:
+    accidental-value "^1.0.0"
+    notecoord "^1.0.1"
+
 seedrandom@2.4.3:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/seedrandom/-/seedrandom-2.4.3.tgz#2438504dad33917314bff18ac4d794f16d6aaecc"
@@ -11181,6 +11222,17 @@ tempy@^0.3.0:
     temp-dir "^1.0.0"
     type-fest "^0.3.1"
     unique-string "^1.0.0"
+
+teoria@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/teoria/-/teoria-2.5.0.tgz#015e245d3094a60e84b2ee5ea9d58d795bf78ed5"
+  integrity sha512-LdnDG2PKkYAdBWGBgqZS3POuwq3Kzwj4PBR4PzEsEQ8T/tGqwEoa++SLDxSx7mvsfYA2VirfJWSXhMcpuhquaQ==
+  dependencies:
+    daccord "^1.0.1"
+    helmholtz "^2.0.1"
+    interval-coords "^1.1.1"
+    pitch-fq "^1.0.0"
+    scientific-notation "^1.0.2"
 
 terminal-link@^2.0.0:
   version "2.1.1"
