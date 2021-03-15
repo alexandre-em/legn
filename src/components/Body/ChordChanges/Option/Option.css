@@ -3,13 +3,21 @@
   display: flex;
   flex-direction: column;
   background-color: rgb(243, 243, 243);
-  padding: 20px;
+  padding: 15px;
 }
 .cc__option > h2 {
-  padding: 20px;
   text-transform: uppercase;
   font-weight: 900;
 }
 .cc__option.begin {
   flex: 1;
+}
+
+@media (max-width: 470px) {
+  .cc__option {
+    display: none;
+  }
+  .cc__option.begin {
+    display: flex;
+  }
 }

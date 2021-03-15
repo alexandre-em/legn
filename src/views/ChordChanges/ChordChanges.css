@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .cc__main > h3 {
@@ -46,9 +45,6 @@
 }
 
 @media (max-width: 470px) {
-  .cc__option {
-    display: none;
-  }
   .cc__main {
     flex: 1;
   }

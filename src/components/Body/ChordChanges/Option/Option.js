@@ -59,7 +59,6 @@ function Option(props) {
                 </NativeSelect>
                 <FormHelperText>Chord Changes</FormHelperText>
             </FormControl>
-            { /* TODO add random */}
 
             <h2>Workout options:</h2>
             <FormControl component="fieldset">
