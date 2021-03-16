@@ -12,7 +12,7 @@ function ChordChanges() {
     const [noteSet, setNoteSet] = useState([])
 
     const [level, setLevel] = useState([])
-    const [chordChange, setChordChange] = useState('')
+    const [chordChange, setChordChange] = useState("")
     const [order, setOrder] = useState('')
     const [repeat, setRepeat] = useState(false)
     const [begin, setBegin] = useState(false)

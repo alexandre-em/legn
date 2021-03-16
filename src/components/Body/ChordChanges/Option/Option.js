@@ -13,7 +13,7 @@ function Option(props) {
                         props.setLevel(e.target.value.split(",").map(val => JSON.parse(val)))
                     }}
                     name="age"
-                    inputProps={{ 'aria-label': 'age' }}
+                    inputProps={{ 'aria-label': 'level' }}
                 >
                     <option value={""}>None</option>
                     <optgroup label="SINGLE CHORD TONES">
@@ -48,8 +48,8 @@ function Option(props) {
                     onChange={e => {
                         props.setChordChange(e.target.value)
                     }}
-                    name="age"
-                    inputProps={{ 'aria-label': 'age' }}
+                    name="changes"
+                    inputProps={{ 'aria-label': 'changes' }}
                 >
                     <option value={""}>None</option>
                     <option value={"Autumn Leave"}>Autumn leave</option>

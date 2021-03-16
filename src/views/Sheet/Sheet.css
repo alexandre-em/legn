@@ -1,0 +1,32 @@
+.sheets {
+    width: 100%;
+    margin: 5px;
+    overflow: auto;
+}
+
+.sheets__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-top: 15px;
+}
+.sheets__header > .MuiSvgIcon-root,
+.tuto > .MuiSvgIcon-root {
+    font-size: 20pt;
+    cursor: pointer;
+}
+
+.sheets__main {
+    text-align: justify;
+    cursor: pointer;
+    font-weight: 500;
+    padding-left: 10px ;
+    opacity: 80%;
+}
+
+.sheets__pagination {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}

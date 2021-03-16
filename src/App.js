@@ -22,8 +22,8 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/changes" component={ChordChanges} />
-            <Route path="/sheets" component={ChordSheet} />
-            <Route path="/sheet/:id" component={Sheet} />
+            <Route path="/sheets" component={Sheet} />
+            <Route path="/sheet/:id" component={ChordSheet} />
             <Route path="/add" component={AddSheet} />
             <Route path="/scales" component={Scales} />
             <Route path="/settings" component={Settings} />
