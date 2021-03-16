@@ -15,6 +15,7 @@
 .tuto > .MuiSvgIcon-root {
     font-size: 20pt;
     cursor: pointer;
+    transition: 210ms;
 }
 
 .sheets__main {
@@ -23,6 +24,10 @@
     font-weight: 500;
     padding-left: 10px ;
     opacity: 80%;
+}
+.sheets__main > p:hover,
+.sheets__header> .MuiSvgIcon-root:hover {
+    color: rgb(100, 143, 237);
 }
 
 .sheets__pagination {

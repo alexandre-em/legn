@@ -12,15 +12,15 @@ function Sheet() {
         { title: "Raging Spur", id: "45678" },
         { title: "Amstramgram", id: "56678" },
         { title: "Let's go to the white park", id: "9438573" },
-        { title: "A Train", id: "23456" },
-        { title: "500 Miles High", id: "34567" },
-        { title: "Raging Spur", id: "45678" },
-        { title: "Amstramgram", id: "56678" },
-        { title: "Let's go to the white park", id: "9438573" },
-        { title: "A Train", id: "23456" },
-        { title: "500 Miles High", id: "34567" },
-        { title: "Raging Spur", id: "45678" },
-        { title: "Amstramgram", id: "56678" },
+        { title: "A Train", id: "23456a" },
+        { title: "500 Miles High", id: "34567a" },
+        { title: "Raging Spur", id: "45678a" },
+        { title: "Amstramgram", id: "56678a" },
+        { title: "Let's go to the white park", id: "9438573a" },
+        { title: "A Train", id: "23456b" },
+        { title: "500 Miles High", id: "34567b" },
+        { title: "Raging Spur", id: "45678b" },
+        { title: "Amstramgram", id: "56678b" },
     ]
     const tuto = [
         { title: "Guitar Neck", id: "123456" },
@@ -41,7 +41,9 @@ function Sheet() {
             </div>
             <div className="sheets__header">
                 <h2>Sheets</h2>
-                <AddCircle />
+                <AddCircle onClick={_ => {
+                    history.push('/add')
+                }}/>
             </div>
             <div className="sheets__main">
                 {list.map(sheet => {

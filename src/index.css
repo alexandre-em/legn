@@ -47,6 +47,9 @@ code {
   font-weight: bold;
   transition: 210ms;
   cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .button:hover,
