@@ -20,7 +20,7 @@ function AddSheet() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if(progress === 0) {
+        if (progress === 0) {
             uploadFile(file, title, composer, year, setIsLoading, setProgress)
         }
     }
@@ -46,14 +46,14 @@ function AddSheet() {
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="add__informations">
-                    <TextField label="Title" value={title} onChange={e => setTitle(e.target.value)}  required/>
-                    <TextField label="Composer" value={composer} onChange={e => setComposer(e.target.value)} required/>
-                    <TextField label="Year" value={year} onChange={e => setYear(e.target.value)} required/>
+                    <TextField label="Title" value={title} onChange={e => setTitle(e.target.value)} required />
+                    <TextField label="Composer" value={composer} onChange={e => setComposer(e.target.value)} required />
+                    <TextField label="Year" value={year} onChange={e => setYear(e.target.value)} required />
                     <div className="upload__submit">
-                        {(progress === 100 && !isLoading)? `"${file.name}" upload successfully!`:""}
+                        {(progress === 100 && !isLoading) ? `"${file.name}" upload successfully!` : ""}
                         <button className="button">
                             <div className="upload__button">
-                                <p>Upload &nbsp;</p> {isLoading?<CircularProgress id="add__loading" variant="determinate" value={progress} />:<Backup />}
+                                <p>Upload &nbsp;</p> {isLoading ? <CircularProgress id="add__loading" variant="determinate" value={progress} /> : <Backup />}
                             </div>
                         </button>
                     </div>

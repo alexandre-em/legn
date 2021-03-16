@@ -2,7 +2,8 @@ import { storage } from '../config/firebase'
 
 const uploadFile = (file, title, composer, year, setIsLoading, setProgress) => {
     setIsLoading(true)
-    const uploadTask = storage.ref(`sheet/${file.name}`).put(file)
+    const filename = new Date().getTime() + "-" + file.name
+    const uploadTask = storage.ref(`sheet/${filename}`).put(file)
 
     uploadTask.on(
         "state_changed",
@@ -12,10 +13,10 @@ const uploadFile = (file, title, composer, year, setIsLoading, setProgress) => {
         (error) => console.error(error),
         () => {
             storage.ref("sheet")
-                .child(file.name)
+                .child(filename)
                 .getDownloadURL()
                 .then(url => {
-                    // postDetails(url, title, composer, year, setIsLoading)
+                    postDetails(url, title, composer, year, setIsLoading)
                     console.log(url)
                 })
         }

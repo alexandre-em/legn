@@ -43,7 +43,7 @@ function Sheet() {
                 <h2>Sheets</h2>
                 <AddCircle onClick={_ => {
                     history.push('/add')
-                }}/>
+                }} />
             </div>
             <div className="sheets__main">
                 {list.map(sheet => {

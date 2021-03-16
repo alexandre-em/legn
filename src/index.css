@@ -26,7 +26,7 @@ code {
   display: flex;
   flex-direction: column;
   flex: 1;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   overflow: auto;
 }
 
@@ -34,6 +34,10 @@ code {
   display: flex;
   height: 100%;
   flex: 1;
+}
+
+a:link{
+  text-decoration: none;
 }
 
 .button {

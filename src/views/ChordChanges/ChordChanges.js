@@ -65,6 +65,7 @@ function ChordChanges() {
 
     useEffect(() => {
         setPitches(selectPitches(getPitches(chords[0].tone), level))
+        // eslint-disable-next-line
     }, [level])
 
     return (
