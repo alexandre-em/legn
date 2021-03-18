@@ -1,0 +1,31 @@
+.notfound {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10vh;
+}
+.notfound__logos{
+    margin-top: 5vh;
+    width: 15%;
+    display: flex;
+    justify-content: space-around;
+}
+.notfound__logo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: 125ms;
+    cursor: pointer;
+}
+
+.notfound__logo:hover {
+    color: #ffb866eb;
+}
+
+#notfound__em {
+    color: rgba(128, 128, 128, 0.5);
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 5vh;
+}

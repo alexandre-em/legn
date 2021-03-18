@@ -36,8 +36,8 @@ function ChordChanges() {
     useEffect(() => {
         // setup(setFrequency)
         setPitches(selectPitches(getPitches(chords[0].tone), [1, 3, 5, 7]))
-        const am = teoria.chord(chords[0].root + chords[0].tone)
-        const notes = (am.notes().map(note => note.toString().replace(/[0-9]/g, '')))
+        const chord = teoria.chord(chords[0].root + chords[0].tone)
+        const notes = (chord.notes().map(note => note.toString().replace(/[0-9]/g, '')))
         setNoteSet(notes.map((val, i) => {
             return {
                 note: val,

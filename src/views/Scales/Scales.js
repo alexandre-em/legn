@@ -1,8 +1,9 @@
 import React from 'react'
+import './Scales.css'
 
 function Scales() {
     return (
-        <div>
+        <div className="scale">
             Scale
         </div>
     )

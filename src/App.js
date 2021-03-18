@@ -28,6 +28,9 @@ function App() {
             <Route path="/scales" component={Scales} />
             <Route path="/settings" component={Settings} />
             <Route path="*" component={NotFound} />
+            {/* Tuto page */}
+            {/* Tuner */}
+            {/* Chat */}
           </Switch>
         </div>
       </div>

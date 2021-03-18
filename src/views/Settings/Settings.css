@@ -1,0 +1,33 @@
+.settings {
+    flex: 1;
+    padding: 15px;
+    flex-wrap: nowrap;
+    overflow: auto;
+}
+.settings h2 {
+    margin-top: 2.5vh;
+}
+.settings i {
+    font-size: 10pt;
+    opacity: 50%;
+}
+
+.settings__form {
+    width: 100%;
+}
+.settings__select {
+    width: 100%;
+    margin-top: .5vh;
+    margin-bottom: .5vh;
+}
+
+.settings__submit {
+    position: absolute;
+    bottom: 1.5%;
+}
+#settings__help {
+    position: absolute;
+    right: 1.5%;
+    bottom: 1.5%;
+    background-color: #00b0ff;
+}

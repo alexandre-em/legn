@@ -12,6 +12,15 @@
 .cc__option.begin {
   flex: 1;
 }
+#cc__image {
+  width: auto;
+  height: 30vh;
+  margin-bottom: 5vh;
+}
+
+#option__begin {
+  margin-top: 5vh;
+}
 
 @media (max-width: 470px) {
   .cc__option {

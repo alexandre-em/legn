@@ -6,6 +6,7 @@
     justify-content: space-between;
     padding-top: 1%;
     color: #ebebebeb;
+    /* max-width: 55px; */
 }
 .body__micon {
     display: flex;

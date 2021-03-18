@@ -39,11 +39,14 @@ function Sheet() {
                     }}>{sheet.title}</p>
                 })}
             </div>
-            <div className="sheets__header">
+            <div className="sheets__header" onClick={_ => {
+                history.push('/add')
+            }}>
                 <h2>Sheets</h2>
-                <AddCircle onClick={_ => {
-                    history.push('/add')
-                }} />
+                <div className="sheets__add">
+                    <AddCircle />
+                Add
+                </div>
             </div>
             <div className="sheets__main">
                 {list.map(sheet => {

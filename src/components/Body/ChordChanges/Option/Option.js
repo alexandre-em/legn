@@ -1,10 +1,12 @@
 import React from 'react'
 import { Checkbox, FormControl, FormControlLabel, FormHelperText, FormLabel, NativeSelect, Radio, RadioGroup } from "@material-ui/core";
 import './Option.css'
+import { ReactComponent as ReactLogo } from '../../../../assets/images/undraw_Progress_tracking_re_ulfg.svg'
 
 function Option(props) {
     return (
         <div className={`cc__option${props.begin?"":" begin"}`}>
+            <ReactLogo id="cc__image"/>
             <h2>Changes setup:</h2>
             <FormControl>
                 <NativeSelect
@@ -80,7 +82,7 @@ function Option(props) {
                 }
                 label="Repeat"
             />
-            <button className="button" onClick={e => props.setBegin()}>Begin</button>
+            <button className="button" id="option__begin" onClick={e => props.setBegin()}>Begin</button>
         </div>
     )
 }

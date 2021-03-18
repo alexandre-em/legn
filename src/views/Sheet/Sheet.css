@@ -1,5 +1,6 @@
 .sheets {
-    width: 100%;
+    /* width: 96%; */
+    flex: 1;
     margin: 5px;
     overflow: auto;
 }
@@ -11,13 +12,6 @@
     margin-bottom: 10px;
     padding-top: 15px;
 }
-.sheets__header > .MuiSvgIcon-root,
-.tuto > .MuiSvgIcon-root {
-    font-size: 20pt;
-    cursor: pointer;
-    transition: 210ms;
-}
-
 .sheets__main {
     text-align: justify;
     cursor: pointer;
@@ -26,12 +20,20 @@
     opacity: 80%;
 }
 .sheets__main > p:hover,
-.sheets__header> .MuiSvgIcon-root:hover {
+.sheets__add:hover {
     color: rgb(100, 143, 237);
 }
 
 .sheets__pagination {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    margin-bottom: 5vh;
+}
+
+.sheets__add {
     display: flex;
-    justify-content: center;
-    padding-top: 15px;
+    align-items: center;
+    cursor: pointer;
+    transition: 210ms;
 }
