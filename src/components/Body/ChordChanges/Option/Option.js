@@ -5,7 +5,7 @@ import { ReactComponent as ReactLogo } from '../../../../assets/images/undraw_Pr
 
 function Option(props) {
     return (
-        <div className={`cc__option${props.begin?"":" begin"}`}>
+        <div className={`cc__option${props.begin!==0?"":" begin"}`}>
             <ReactLogo id="cc__image"/>
             <h2>Changes setup:</h2>
             <FormControl>
@@ -54,10 +54,9 @@ function Option(props) {
                     inputProps={{ 'aria-label': 'changes' }}
                 >
                     <option value={""}>None</option>
-                    <option value={"Autumn Leave"}>Autumn leave</option>
-                    <option value={"A train"}>A train</option>
-                    <option value={"500 Miles High"}>500 Miles High</option>
-                    <option value={"Fly me to the Moon"}>Fly me to the Moon</option>
+                    {props.songs.map((val, i) =>{
+                        return <option key={val.songname+i} value={i}>{val.songname}</option>
+                    })}
                 </NativeSelect>
                 <FormHelperText>Chord Changes</FormHelperText>
             </FormControl>

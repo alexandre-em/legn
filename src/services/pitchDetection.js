@@ -1,9 +1,19 @@
 import * as ml5 from "ml5";
 
+const audioContext = new AudioContext();
+let stream
+
+/** Allume le micro */
 const setup = async (setFrequency) => {
-    const audioContext = new AudioContext();
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
     pitchDetection(audioContext, stream, setFrequency)
+}
+
+/** Eteint le micro */
+const closeChanges = async () => {
+    stream.getTracks().forEach((track) => {
+        track.stop()
+    })
 }
 
 const pitchDetection = (audioContext, stream, setFrequency) => {
@@ -24,7 +34,8 @@ const pitchDetection = (audioContext, stream, setFrequency) => {
             pitch.getPitch(getPitch);
         }
     }
-    const pitch = ml5.pitchDetection('http://localhost:3000/models/', audioContext, stream, modelLoaded)
+    const url = process.env.REACT_APP_ENDPOINT
+    const pitch = ml5.pitchDetection(url, audioContext, stream, modelLoaded)
 }
 
-export { setup }
+export { setup, closeChanges }

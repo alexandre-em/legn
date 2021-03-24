@@ -1,6 +1,6 @@
-import { Fab, FormControl, FormHelperText, InputLabel, NativeSelect, TextField } from '@material-ui/core'
+import { Fab, FormControl, InputLabel, NativeSelect, TextField } from '@material-ui/core'
 import { Help } from '@material-ui/icons'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './Settings.css'
 
 function Settings() {
