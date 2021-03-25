@@ -1,7 +1,7 @@
 import { CircularProgress, TextField } from '@material-ui/core'
 import { Backup, Folder } from '@material-ui/icons'
 import React, { useState } from 'react'
-import { uploadFile } from '../../services/uploadSheet'
+import { uploadFile } from '../../services/Api/uploadSheet'
 import './AddSheet.css'
 
 function AddSheet() {
@@ -12,6 +12,7 @@ function AddSheet() {
     const [title, setTitle] = useState('')
     const [composer, setComposer] = useState('')
     const [year, setYear] = useState('')
+    const [author, setAuthor] = useState('')
 
     const handleChange = (e) => {
         if (e.target.files[0])
@@ -21,7 +22,7 @@ function AddSheet() {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (progress === 0) {
-            uploadFile(file, title, composer, year, setIsLoading, setProgress)
+            uploadFile(file, title, author, setIsLoading, setProgress)
         }
     }
 

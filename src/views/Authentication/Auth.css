@@ -1,0 +1,72 @@
+.auth {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.25), rgba(0,0,0,0.5), rgba(0,0,0,.75)), url("../../assets/images/alexander-bennington-A2O8CUP3iUw-unsplash.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.auth__box {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ebebebde;
+    padding: 1.5%;
+}
+.test {
+    background-color: red;
+    height: 100%;
+}
+
+.auth__form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.auth__inputs {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth__buttons {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.auth__credit {
+    position: absolute;
+    bottom: 2.5%;
+    right: 2.5%;
+    mix-blend-mode: difference;
+    opacity: 80%;
+}
+
+.auth__input {
+    width: 100%;
+    margin-top: 1.2vh;
+    margin-bottom: 1.5vh;
+}
+
+.register__upload {
+    margin-top: 1.8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#register__submit {
+    display: flex;
+    align-items: center;
+    margin-top: 2vh;
+    margin-bottom: 1.5vh;
+}

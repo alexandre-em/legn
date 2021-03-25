@@ -1,4 +1,6 @@
 import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import { useState } from "react";
 import Home from "./views/Home/Home"
 import ChordChanges from "./views/ChordChanges/ChordChanges"
 import ChordSheet from "./views/ChordSheet/ChordSheet"
@@ -9,33 +11,55 @@ import NotFound from "./views/NotFound/NotFound"
 import Header from "./components/Header/Header";
 import Menu from "./components/Body/Menu/Menu";
 import Sheet from "./views/Sheet/Sheet";
-import { createBrowserHistory } from "history";
+import Login from "./views/Authentication/Login";
+import Register from "./views/Authentication/Register";
 
 function App() {
   const history = createBrowserHistory()
-  return (
-    <BrowserRouter history={history}>
-      <div className="App">
-        <Header />
-        <div className="body">
-          <Menu />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/changes" component={ChordChanges} />
-            <Route path="/sheets" component={Sheet} />
-            <Route path="/sheet/:id" component={ChordSheet} />
-            <Route path="/add" component={AddSheet} />
-            <Route path="/scales" component={Scales} />
-            <Route path="/settings" component={Settings} />
-            <Route path="*" component={NotFound} />
-            {/* Tuto page */}
-            {/* Tuner */}
-            {/* Chat */}
-          </Switch>
+  const [authenticated, setAuthenticated] = useState(true)
+
+  if (!authenticated) {
+    return (
+      <BrowserRouter history={history}>
+        <div className="App">
+          <div className="body">
+            <Switch>
+              <Route exact path="/" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </div>
         </div>
-      </div>
-    </BrowserRouter>
-  );
+      </BrowserRouter>
+    )
+  }
+  else {
+    return (
+      <BrowserRouter history={history}>
+        <div className="App">
+          <Header />
+          <div className="body">
+            <Menu />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/changes" component={ChordChanges} />
+              <Route path="/sheets" component={Sheet} />
+              <Route path="/sheet/:id" component={ChordSheet} />
+              <Route path="/add" component={AddSheet} />
+              <Route path="/scales" component={Scales} />
+              <Route path="/settings" component={Settings} />
+              {/* TODO */}
+              {/* Tuto page */}
+              {/* Tuner */}
+              {/* Chat */}
+
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </div>
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;

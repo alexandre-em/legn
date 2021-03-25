@@ -1,6 +1,8 @@
-import { storage } from '../config/firebase'
+import { storage } from '../../config/firebase'
+import { addSheet } from './Sheet'
 
-const uploadFile = (file, title, composer, year, setIsLoading, setProgress) => {
+
+const uploadFile = (file, title, author, setIsLoading, setProgress) => {
     setIsLoading(true)
     const filename = new Date().getTime() + "-" + file.name
     const uploadTask = storage.ref(`sheet/${filename}`).put(file)
@@ -16,14 +18,14 @@ const uploadFile = (file, title, composer, year, setIsLoading, setProgress) => {
                 .child(filename)
                 .getDownloadURL()
                 .then(url => {
-                    postDetails(url, title, composer, year, setIsLoading)
-                    console.log(url)
+                    postDetails(url, title, author, setIsLoading)
                 })
         }
     )
 }
 
-const postDetails = (url, title, composer, year, setIsLoading) => {
+const postDetails = (url, title, author, setIsLoading) => {
+    addSheet(author, title, url)
     setIsLoading(false)
 }
 
