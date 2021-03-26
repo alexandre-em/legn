@@ -1,6 +1,7 @@
 import { CircularProgress, TextField } from '@material-ui/core'
 import { Backup, Folder } from '@material-ui/icons'
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { uploadFile } from '../../services/Api/uploadSheet'
 import './AddSheet.css'
 
@@ -12,7 +13,7 @@ function AddSheet() {
     const [title, setTitle] = useState('')
     const [composer, setComposer] = useState('')
     const [year, setYear] = useState('')
-    const [author, setAuthor] = useState('')
+    const author = useSelector(state => state.auth.user_public)
 
     const handleChange = (e) => {
         if (e.target.files[0])
@@ -22,10 +23,10 @@ function AddSheet() {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (progress === 0) {
-            uploadFile(file, title, author, setIsLoading, setProgress)
+            uploadFile(file, title, composer, year, author, setIsLoading, setProgress)
         }
     }
-
+    // TODO: redirect to sheet page when completed
     return (
         <div className="add">
             <div className="add__upload">

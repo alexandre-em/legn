@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { useEffect, useState } from "react";
 import Home from "./views/Home/Home"
@@ -23,7 +23,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (user.token) {
+    if (user?.token) {
       checkInfo(user.token)
         .catch((error) => {
           dispatch(logout())
@@ -31,7 +31,7 @@ function App() {
     }
   }, [])
 
-  if (!user.token) {
+  if (!user?.token) {
     return (
       <BrowserRouter history={history}>
         <div className="App">
@@ -39,7 +39,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Login} />
               <Route path="/register" component={Register} />
-              <Route path="*" component={NotFound} />
+              <Route path="*" render={() => <Redirect to="/" />} />
             </Switch>
           </div>
         </div>
@@ -65,7 +65,8 @@ function App() {
               {/* Tuto page */}
               {/* Tuner */}
               {/* Chat */}
-
+              
+              <Route path="/register" render={() => <Redirect to="/" />} />
               <Route path="*" component={NotFound} />
             </Switch>
           </div>

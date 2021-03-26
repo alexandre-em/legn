@@ -1,14 +1,16 @@
 import { CircularProgress, TextField } from '@material-ui/core'
 import { Image } from '@material-ui/icons'
 import React, { useState } from 'react'
-import { Redirect } from 'react-router'
-import { uploadAvatar, registerUser } from '../../services/Api/Auth'
+import { useDispatch } from 'react-redux'
+import { uploadAvatar, registerUser, checkInfo } from '../../services/Api/Auth'
+import { login as loginAction } from '../../store/actions'
 
 function Register() {
     const [file, setFile] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
-    const [redirect, setRedirect] = useState(false)
     const [progress, setProgress] = useState(0)
+    const dispatch = useDispatch()
+
 
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
@@ -25,13 +27,19 @@ function Register() {
         e.preventDefault()
         if (file) {
             if (progress === 0)
-                uploadAvatar(file, email, username, fullname, password, setIsLoading, setProgress, setRedirect)
-        } else 
-            registerUser(email, username, password, fullname, '').then(_ => setRedirect(true))
+                uploadAvatar(file, email, username, fullname, password, setIsLoading, setProgress, dispatch, loginAction)
+        } else
+            registerUser(email, username, password, fullname, '')
+                .then(async data => {
+                    await checkInfo(data.data?.Authorization).then(dt => {
+                        dispatch(loginAction({ ...dt.data.data, token: data.data.Authorization }))
+                    })
+                })
+                .catch(err => {
+                    console.log(err.response.data.message, err.response.status)
+                })
     }
 
-    if (redirect)
-        return <Redirect to='/' />;
     return (
         <div className='auth'>
             <div className="auth__box">

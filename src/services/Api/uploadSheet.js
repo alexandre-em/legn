@@ -1,8 +1,8 @@
 import { storage } from '../../config/firebase'
-import { addSheet } from './Sheet'
+import axios from '../../config/axios'
 
 
-const uploadFile = (file, title, author, setIsLoading, setProgress) => {
+const uploadFile = (file, title, composer, year, author, setIsLoading, setProgress) => {
     setIsLoading(true)
     const filename = new Date().getTime() + "-" + file.name
     const uploadTask = storage.ref(`sheet/${filename}`).put(file)
@@ -18,15 +18,22 @@ const uploadFile = (file, title, author, setIsLoading, setProgress) => {
                 .child(filename)
                 .getDownloadURL()
                 .then(url => {
-                    postDetails(url, title, author, setIsLoading)
+                    postDetails(url, title, composer, year, author, setIsLoading).then(_ => {
+                        setIsLoading(false)
+                    })
                 })
         }
     )
 }
 
-const postDetails = (url, title, author, setIsLoading) => {
-    addSheet(author, title, url)
-    setIsLoading(false)
+const postDetails = (url, title, composer, year, author) => {
+    return axios.post('/sheet/', {
+        author: author,
+        title: title,
+        url: url,
+        composer: composer,
+        year: year
+    })
 }
 
 export { uploadFile, postDetails }

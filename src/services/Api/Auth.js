@@ -27,11 +27,8 @@ const registerUser = (email, username, password, fullname, avatar) => {
     })
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
-const uploadAvatar = (file, email, username, fullname, password, setIsLoading, setProgress, setRedirect) => {
+const uploadAvatar = (file, email, username, fullname, password, setIsLoading, setProgress, dispatch, loginAction) => {
     setIsLoading(true)
     const filename = new Date().getTime() + "-" + file.name
     const uploadTask = storage.ref(`avatar/${filename}`).put(file)
@@ -48,11 +45,11 @@ const uploadAvatar = (file, email, username, fullname, password, setIsLoading, s
                 .getDownloadURL()
                 .then(url => {
                     registerUser(email, username, password, fullname, url).then(async data => {
-                        console.log(data) // TODO Store Authentication into redux
                         setProgress(100)
                         setIsLoading(false)
-                        await sleep(3000)
-                        setRedirect(true)
+                        checkInfo(data.data.Authorization).then(async dt => {
+                            await dispatch(loginAction({ ...dt.data.data, token: data.data.Authorization }))
+                        })
                     })
                 })
         }

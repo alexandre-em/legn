@@ -51,10 +51,10 @@ function ChordChanges() {
 
     useEffect(() => {
         // setup(setFrequency) // TODO: Uncomment
-        getChanges().then(res => {
-            setSongs(res.data.data)
-        })
-        return closeChanges
+        // getChanges().then(res => {
+        //     setSongs(res.data.data)
+        // })
+        // return closeChanges
         // eslint-disable-next-line
     }, [])
 
