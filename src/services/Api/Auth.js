@@ -10,11 +10,11 @@ const login = (email, password) => {
 }
 
 const logout = (token) => {
-    return axios.post('/auth/logout/'+token)
+    return axios.post('/auth/logout/' + token)
 }
 
 const checkInfo = (token) => {
-    return axios.get('/auth/check/'+token)
+    return axios.get('/auth/check/' + token)
 }
 
 const registerUser = (email, username, password, fullname, avatar) => {
@@ -39,7 +39,7 @@ const uploadAvatar = (file, email, username, fullname, password, setIsLoading, s
     uploadTask.on(
         "state_changed",
         (snapshot) => {
-            setProgress(((snapshot.bytesTransferred / snapshot.totalBytes) * 100)-10)
+            setProgress(((snapshot.bytesTransferred / snapshot.totalBytes) * 100) - 10)
         },
         (error) => console.error(error),
         () => {

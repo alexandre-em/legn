@@ -1,6 +1,6 @@
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Home from "./views/Home/Home"
 import ChordChanges from "./views/ChordChanges/ChordChanges"
 import ChordSheet from "./views/ChordSheet/ChordSheet"
@@ -13,12 +13,25 @@ import Menu from "./components/Body/Menu/Menu";
 import Sheet from "./views/Sheet/Sheet";
 import Login from "./views/Authentication/Login";
 import Register from "./views/Authentication/Register";
+import { useDispatch, useSelector } from "react-redux";
+import { checkInfo } from "./services/Api/Auth";
+import { logout } from "./store/actions";
 
 function App() {
   const history = createBrowserHistory()
-  const [authenticated, setAuthenticated] = useState(true)
+  const user = useSelector(state => state.auth)
+  const dispatch = useDispatch()
 
-  if (!authenticated) {
+  useEffect(() => {
+    if (user.token) {
+      checkInfo(user.token)
+        .catch((error) => {
+          dispatch(logout())
+        })
+    }
+  }, [])
+
+  if (!user.token) {
     return (
       <BrowserRouter history={history}>
         <div className="App">

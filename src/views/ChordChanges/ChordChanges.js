@@ -30,7 +30,6 @@ function ChordChanges() {
     const initTest = () => {
         const chordParsed = parseChords(songs[chordChange].chords)
         setChords(getChords(chordParsed, order, setChords))
-        console.log(chords)
         setPitches(selectPitches(getPitches(chordParsed[0].tone), level))
         initChord()
     }
@@ -51,7 +50,7 @@ function ChordChanges() {
     }
 
     useEffect(() => {
-        setup(setFrequency)
+        // setup(setFrequency) // TODO: Uncomment
         getChanges().then(res => {
             setSongs(res.data.data)
         })

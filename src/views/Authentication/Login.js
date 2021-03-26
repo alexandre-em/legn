@@ -1,7 +1,9 @@
 import { TextField } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
 import { checkInfo, login } from '../../services/Api/Auth'
+import { login as loginAction } from '../../store/actions'
 import './Auth.css'
 
 function Login() {
@@ -9,13 +11,17 @@ function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [token, setToken] = useState(null)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        if(token){
-            checkInfo(token).then(data => console.log(data.data.data)) // TODO: store redux
+        if (token) {
+            checkInfo(token).then(data => {
+                dispatch(loginAction({ ...data.data.data, token: token }))
+            })
         }
+        // eslint-disable-next-line
     }, [token])
-
+    
     return (
         <div className="auth">
             <div className="auth__box">
