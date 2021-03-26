@@ -2,7 +2,7 @@ import { CircularProgress, TextField } from '@material-ui/core'
 import { Backup, Folder } from '@material-ui/icons'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { uploadFile } from '../../services/Api/uploadSheet'
+import { uploadFile } from '../../services/Api/Sheet'
 import './AddSheet.css'
 
 function AddSheet() {

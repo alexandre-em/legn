@@ -2,6 +2,19 @@ import { storage } from '../../config/firebase'
 import axios from '../../config/axios'
 
 
+const getAllSheets = (page) => {
+    return axios.get(`/sheet/?page=${page || 1}`)
+}
+
+const getSheetById = (id) => {
+    return axios.get('/sheet/id/'+id)
+}
+
+const searchSheet = (search, page) => {
+    const num = page? page:1
+    return axios.get('/sheet/search/'+search+'?page='+num)
+}
+
 const uploadFile = (file, title, composer, year, author, setIsLoading, setProgress) => {
     setIsLoading(true)
     const filename = new Date().getTime() + "-" + file.name
@@ -36,4 +49,4 @@ const postDetails = (url, title, composer, year, author) => {
     })
 }
 
-export { uploadFile, postDetails }
+export { uploadFile, postDetails, getAllSheets, getSheetById, searchSheet }

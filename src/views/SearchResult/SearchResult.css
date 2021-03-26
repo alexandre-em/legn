@@ -1,0 +1,15 @@
+.search_results {
+    padding: 10px;
+    flex: 1;
+    overflow: auto;
+}
+
+.search_results > h1 {
+    margin-bottom: 3vh;
+}
+
+.search__pagination {
+    position: absolute;
+    bottom: 2%;
+    right: 45%;
+}

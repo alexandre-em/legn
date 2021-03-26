@@ -13,6 +13,7 @@ import Menu from "./components/Body/Menu/Menu";
 import Sheet from "./views/Sheet/Sheet";
 import Login from "./views/Authentication/Login";
 import Register from "./views/Authentication/Register";
+import SearchResult from './views/SearchResult/SearchResult'
 import { useDispatch, useSelector } from "react-redux";
 import { checkInfo } from "./services/Api/Auth";
 import { logout } from "./store/actions";
@@ -61,6 +62,7 @@ function App() {
               <Route path="/add" component={AddSheet} />
               <Route path="/scales" component={Scales} />
               <Route path="/settings" component={Settings} />
+              <Route path="/search" component={SearchResult} />
               {/* TODO */}
               {/* Tuto page */}
               {/* Tuner */}

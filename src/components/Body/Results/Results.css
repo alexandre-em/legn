@@ -1,0 +1,10 @@
+.result__details{
+    padding-left: 2.5vw;
+    margin-bottom: 2vh;
+    cursor: pointer;
+    transition: 120ms;
+}
+
+.result__details:hover{
+    background-color: #ebebebeb;
+}
