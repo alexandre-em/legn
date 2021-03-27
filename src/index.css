@@ -21,19 +21,16 @@ code {
 }
 
 .App {
-  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   flex: 1;
-  /* flex-wrap: wrap; */
-  overflow: auto;
+  overflow: hidden;
 }
 
 .body {
   display: flex;
-  height: 100%;
-  flex: 1;
+  flex: .95;
 }
 
 a:link{

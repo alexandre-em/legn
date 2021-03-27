@@ -1,6 +1,6 @@
 import React from 'react'
 import './Menu.css'
-import { Settings, MusicNote, School, Assignment, Home } from '@material-ui/icons'
+import { Settings, MusicNote, School, Assignment, Home, Chat } from '@material-ui/icons'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
@@ -32,6 +32,10 @@ function Menu() {
                 <div className="body__micon" onClick={e => history.push('/sheets')}>
                     <MusicNote />
                     Sheets
+                </div>
+                <div className="body__micon" onClick={e => history.push('/chat')}>
+                    <Chat />
+                    Chat
                 </div>
             </div>
             <div className="body__sub">

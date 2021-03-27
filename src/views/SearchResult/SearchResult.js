@@ -9,7 +9,7 @@ function SearchResult() {
     // const query = useQuery()
     const search = new URLSearchParams(useLocation().search)
     const [result, setResult] = useState()
-    const [counter, setCounter] = useState(1)
+    const [counter, setCounter] = useState(0)
     const [total, setTotal] = useState(0)
     const history = useHistory()
 
@@ -17,6 +17,7 @@ function SearchResult() {
         searchSheet(search.get('keyword'), search.get('page')).then(data => {
             setResult(data.data.data)
             setTotal(data.data.pages)
+            setCounter(data.data.total)
         })
         // eslint-disable-next-line
     }, [search.get('keyword'), search.get('page')])

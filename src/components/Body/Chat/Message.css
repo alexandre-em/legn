@@ -1,0 +1,44 @@
+.message,
+.message--sender {
+    padding: 10px;
+    display: flex;
+}
+.message--sender {
+    justify-content: flex-end;
+}
+
+.message__bulle,
+.message__bulle--sender {
+    background-color: rgba(155, 196, 229, 0.342);
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    padding: 1.5%;
+    border-radius: 6px;
+    min-width: 35%;
+}
+
+.message__bulle--sender {
+    background-color: rgba(241, 201, 141, 0.342);
+}
+
+.message__title {
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom: 5%;
+}
+.message__title p {
+    font-size: 7.5pt;
+    opacity: 40%;
+}
+
+
+.message__content,
+.message__content--sender {
+    font-style: italic;
+    font-size: 10.5pt;
+    opacity: 75%;
+}
+.message__content--sender {
+    text-align:right;
+}

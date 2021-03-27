@@ -17,6 +17,7 @@ import SearchResult from './views/SearchResult/SearchResult'
 import { useDispatch, useSelector } from "react-redux";
 import { checkInfo } from "./services/Api/Auth";
 import { logout } from "./store/actions";
+import Chat from "./views/Chat/Chat";
 
 function App() {
   const history = createBrowserHistory()
@@ -66,8 +67,7 @@ function App() {
               {/* TODO */}
               {/* Tuto page */}
               {/* Tuner */}
-              {/* Chat */}
-              
+              <Route path="/chat" component={Chat} />
               <Route path="/register" render={() => <Redirect to="/" />} />
               <Route path="*" component={NotFound} />
             </Switch>

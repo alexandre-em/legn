@@ -3,17 +3,20 @@ import "./Header.css"
 import { NavigateBefore, NavigateNext, ExitToApp } from "@material-ui/icons/"
 import { useHistory } from 'react-router'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../store/actions'
 
 function Header() {
     const history = useHistory()
     const [search, setSearch] = useState('')
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.auth)
 
     const handleSubmit = e => {
         e.preventDefault()
         history.push('/search?keyword='+search)
         setSearch('')
     }
-
 
     return (
         <div className="header">
@@ -32,8 +35,7 @@ function Header() {
                 </form>
             </div>
             <div className="profile">
-                {/* <b>Leg(n)</b> */}
-                <ExitToApp />
+                <ExitToApp onClick={() => dispatch(logout(user.token))}/>
             </div>
         </div>
     )
