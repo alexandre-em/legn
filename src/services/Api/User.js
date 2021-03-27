@@ -4,4 +4,10 @@ const getUserById = (id) => {
     return axios.get('/user/'+id)
 }
 
-export { getUserById }
+// TODO: check if email is valid
+const checkEmail = email => {
+    return false
+}
+
+
+export { getUserById, checkEmail }

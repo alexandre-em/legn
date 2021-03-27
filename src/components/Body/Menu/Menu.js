@@ -3,16 +3,11 @@ import './Menu.css'
 import { Settings, MusicNote, School, Assignment, Home, Chat } from '@material-ui/icons'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
 import { Avatar } from '@material-ui/core'
 
 function Menu() {
     const history = useHistory()
-    const avatar = useSelector(state => state.auth.avatar)
-
-    useEffect(() => {
-        console.log(avatar)
-    }, [])
+    const user = useSelector(state => state.auth)
 
     return (
         <div className="body__menu">
@@ -43,8 +38,8 @@ function Menu() {
                     <Settings />
                     Settings
                 </div>
-                <div className="body__micon" onClick={e => history.push('/profil')}>
-                    <Avatar src={avatar} />
+                <div className="body__micon" onClick={e => history.push(`/user/${user.user_public}`)}>
+                    <Avatar src={user.avatar} />
                     Profil
                 </div>
             </div>

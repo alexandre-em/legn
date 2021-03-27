@@ -12,6 +12,8 @@ function Chat() {
     const user = useSelector(state => state.auth)
     const [loading, setLoading] = useState(true)
 
+    const MAX_MSG_SIZE = 170
+
     const handleSubmit = e => {
         e.preventDefault()
         sendMessage({
@@ -25,15 +27,12 @@ function Chat() {
 
     useEffect(() => {
         setLoading(true)
-        getMessages().then(data => {
+        getMessages().onSnapshot(data => {
             setMessages(data.docs.map(doc => {
                 return doc.data()
             }))
             setLoading(false)
         })
-            .catch(err => {
-                console.log(err)
-            })
     }, [])
 
     if (loading)
@@ -52,7 +51,10 @@ function Chat() {
                 <form onSubmit={handleSubmit}>
                     <div className="chat__form">
                         <div className="chat__input">
-                            <input type="text" value={text} onChange={e => setText(e.target.value)} placeholder="Type your message here..." />
+                            <input type="text" value={text} onChange={e => {
+                                if (e.target.value.length<MAX_MSG_SIZE)
+                                    setText(e.target.value)}
+                                } placeholder="Type your message here..." />
                         </div>
                         <div className="chat__button" onClick={handleSubmit}>
                             <SendRounded />

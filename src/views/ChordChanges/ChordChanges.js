@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPitches, selectPitches, parseChords, getChords } from "../../services/chordChanges";
-import { setup, closeChanges } from "../../services/pitchDetection";
+// import { setup, closeChanges } from "../../services/pitchDetection";
 import "./ChordChanges.css"
 import teoria from 'teoria'
 import * as notesFreq from '../../constants/notesFrequencies'
@@ -8,6 +8,7 @@ import Option from "../../components/Body/ChordChanges/Option/Option";
 import { getChanges } from "../../services/Api/ChordChanges";
 
 function ChordChanges() {
+    // eslint-disable-next-line
     const [frequency, setFrequency] = useState(0)
     const [pitches, setPitches] = useState([])
     const [noteSet, setNoteSet] = useState([])
@@ -51,9 +52,9 @@ function ChordChanges() {
 
     useEffect(() => {
         // setup(setFrequency) // TODO: Uncomment
-        // getChanges().then(res => {
-        //     setSongs(res.data.data)
-        // })
+        getChanges().then(res => {
+            setSongs(res.data.data)
+        })
         // return closeChanges
         // eslint-disable-next-line
     }, [])
@@ -96,7 +97,7 @@ function ChordChanges() {
     return (
         <div className="cc">
             {begin!==0 ? <div className="cc__main">
-                <h3>{chordChange}</h3>
+                <h3>{songs[chordChange].songname}</h3>
                 <div className="main__current">
                     <h1>{chords[0]?.root}<sup>{chords[0]?.tone}</sup></h1>
                     <h4>{pitches.map(({ pitch, found }, i) => {

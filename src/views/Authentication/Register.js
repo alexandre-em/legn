@@ -46,22 +46,26 @@ function Register() {
                 <h1>Register</h1>
                 <form noValidate autoComplete="off" className="auth__form" onSubmit={handleSubmit}>
                     <div className="auth__inputs">
-                        <TextField value={email} onChange={e => setEmail(e.target.value)} label="Email" />
-                        <TextField value={username} onChange={e => setUsername(e.target.value)} label="Username" />
-                        <TextField value={fullname} onChange={e => setFullname(e.target.value)} label="Fullname" />
+                        <TextField value={email} onChange={e => setEmail(e.target.value)} label="Email" required />
+                        <TextField value={username} onChange={e => setUsername(e.target.value)} label="Username" required />
+                        <TextField value={fullname} onChange={e => setFullname(e.target.value)} label="Fullname" required />
                         <TextField
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             label="Password"
                             type="password"
                             autoComplete="current-password"
+                            required
                         />
                         <TextField
+                            error={password !== confirmation} 
+                            helperText={password !== confirmation && "passwords do not match"}
                             value={confirmation}
                             onChange={e => setConfirmation(e.target.value)}
                             label="Confirm password"
                             type="password"
                             autoComplete="current-password"
+                            required
                         />
                         <div className="register__upload">
                             <label htmlFor="upload-file">

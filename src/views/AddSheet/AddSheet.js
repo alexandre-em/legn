@@ -2,6 +2,7 @@ import { CircularProgress, TextField } from '@material-ui/core'
 import { Backup, Folder } from '@material-ui/icons'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { Redirect } from 'react-router'
 import { uploadFile } from '../../services/Api/Sheet'
 import './AddSheet.css'
 
@@ -26,7 +27,9 @@ function AddSheet() {
             uploadFile(file, title, composer, year, author, setIsLoading, setProgress)
         }
     }
-    // TODO: redirect to sheet page when completed
+    
+    if (progress === 100 && !isLoading)
+        return <Redirect to={`/sheets/`} />
     return (
         <div className="add">
             <div className="add__upload">

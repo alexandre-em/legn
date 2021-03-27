@@ -1,6 +1,6 @@
 import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Home from "./views/Home/Home"
 import ChordChanges from "./views/ChordChanges/ChordChanges"
 import ChordSheet from "./views/ChordSheet/ChordSheet"
@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkInfo } from "./services/Api/Auth";
 import { logout } from "./store/actions";
 import Chat from "./views/Chat/Chat";
+import User from "./views/User/User";
 
 function App() {
   const history = createBrowserHistory()
@@ -31,6 +32,7 @@ function App() {
           dispatch(logout())
         })
     }
+    // eslint-disable-next-line
   }, [])
 
   if (!user?.token) {
@@ -68,6 +70,7 @@ function App() {
               {/* Tuto page */}
               {/* Tuner */}
               <Route path="/chat" component={Chat} />
+              <Route path="/user/:uid" component={User} />
               <Route path="/register" render={() => <Redirect to="/" />} />
               <Route path="*" component={NotFound} />
             </Switch>

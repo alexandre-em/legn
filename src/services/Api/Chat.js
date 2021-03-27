@@ -5,7 +5,7 @@ const messagesCollection = db.collection('messages');
 
 
 const getMessages = () => {
-    return messagesCollection.get()
+    return messagesCollection.orderBy("create_at", "asc")
 }
 
 const sendMessage = async (info) => {

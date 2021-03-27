@@ -15,7 +15,9 @@ const persistConfig = {
 
 const pReducer = persistReducer(persistConfig, reducers)
 
-const middleware = compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const middleware = window.navigator.userAgent.includes('Chrome') ?
+    compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    : compose(applyMiddleware(thunk))
 const store = createStore(pReducer, middleware)
 
 const persistor = persistStore(store)
