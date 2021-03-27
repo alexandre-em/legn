@@ -12,7 +12,7 @@ function Chat() {
     const user = useSelector(state => state.auth)
     const [loading, setLoading] = useState(true)
 
-    const MAX_MSG_SIZE = 170
+    const MAX_MSG_SIZE = 280
 
     const handleSubmit = e => {
         e.preventDefault()

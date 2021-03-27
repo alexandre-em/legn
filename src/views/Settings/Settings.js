@@ -1,9 +1,10 @@
-import { Fab, FormControl, InputLabel, NativeSelect, TextField } from '@material-ui/core'
+import { CircularProgress, Fab, Snackbar, TextField } from '@material-ui/core'
 import { Help, Image } from '@material-ui/icons'
+import { Alert } from '@material-ui/lab'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { getUserById } from '../../services/Api/User'
+import { getUserById, updateAvatar, updateUserInfo } from '../../services/Api/User'
 import './Settings.css'
 
 function Settings() {
@@ -14,13 +15,14 @@ function Settings() {
     const [confirmation, setConfirmation] = useState('')
     const [file, setFile] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [progress, setProgress] = useState(-10)
+    const [open, setOpen] = useState(false)
 
     const uid = useSelector(state => state.auth.user_public)
 
     useEffect(() => {
         setIsLoading(true)
         getUserById(uid).then(data => {
-            console.log(data.data)
             setUsername(data.data.username)
             setEmail(data.data.email)
             setFullName(data.data.firstname)
@@ -30,16 +32,31 @@ function Settings() {
     }, [uid])
 
     const handleChange = e => {
-        e.preventDefault()
-
+        if (e.target.files[0])
+            setFile(e.target.files[0]);
     }
 
     const handleSubmit = e => {
         e.preventDefault()
+        const data = {
+            ...(email && { email: email }),
+            ...(username && { username: username }),
+            ...(fullName && { firstname: fullName }),
+            ...(password && { password: password }),
+        }
+        if (file)
+            updateAvatar(file, uid, data, setIsLoading, setOpen, setProgress)
+        else
+            updateUserInfo(uid, data).then(_ => setOpen(true))
     }
 
     return (
         <div className='settings'>
+            <Snackbar open={open} autoHideDuration={6000} onClose={_ => setOpen(false)}>
+                <Alert onClose={_ => setOpen(false)} severity="success">
+                    Updated successfully !
+                </Alert>
+            </Snackbar>
             <h1>Settings</h1>
             <i>@demo</i>
             <form onSubmit={handleSubmit}>
@@ -58,7 +75,7 @@ function Settings() {
                 <div className="settings__select">
                     <TextField error={password !== confirmation} helperText={password !== confirmation && "passwords do not match"} label="Confirm password" type='password' value={confirmation} onChange={e => setConfirmation(e.target.value)} fullWidth />
                 </div>
-                <div className="register__upload">
+                <div className="register__upload" id="settings_avatar">
                     <label htmlFor="upload-file">
                         <input
                             type="file"
@@ -75,7 +92,7 @@ function Settings() {
                     </label>
                     <span style={{ color: "#b4b4b4", fontSize: "10pt" }}>{file ? "Loaded: " + file.name : "No file selected"}</span>
                 </div>
-                <button className="button">Save</button>
+                <button className='button' id="register__submit" type="submit">{isLoading ? <CircularProgress id="add__loading" variant="determinate" value={progress} /> : "Save changes"}</button>
             </form>
 
 
