@@ -11,7 +11,6 @@
 # production
 /build
 cors.json
-/src/assets/images
 
 # misc
 .DS_Store
