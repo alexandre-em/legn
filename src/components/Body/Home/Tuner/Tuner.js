@@ -6,11 +6,11 @@ function Tuner({ note, progress, handleClick, beginTuner }) {
     // TODO: Optimize tuner note detection
     return (
         <div className="tuner" >
-            <h3>Tuner</h3>
+            <h2>Tuner</h2>
             <div className="tuner__contents">
                 <Button color={beginTuner?"secondary":"primary"} variant="outlined" onClick={handleClick} >{beginTuner?"Stop Tuner":"Run Tuner"}</Button>
                 <div className="tuner__progressbar" style={{
-                    backgroundColor: (progress === 0) ? "green" : "#ebebebeb",
+                    backgroundColor: (progress === 0) ? "rgba(76, 150, 76, .9)" : "#ebebebeb",
                     display: beginTuner ? "flex" : "none"
                 }}>
                     <div className="tuner__progress" style={{
@@ -23,7 +23,7 @@ function Tuner({ note, progress, handleClick, beginTuner }) {
                 <div className="tuner__note" style={{
                     display: beginTuner ? "flex" : "none"
                 }}>
-                    <h1>{note}</h1>
+                    <h1>{note?`${note}`:'-/-'}</h1>
                 </div>
             </div>
         </div>

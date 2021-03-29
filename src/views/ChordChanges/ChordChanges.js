@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPitches, selectPitches, parseChords, getChords } from "../../services/chordChanges";
-// import { setup, closeChanges } from "../../services/pitchDetection";
+import { setup, closeChanges } from "../../services/pitchDetection";
 import "./ChordChanges.css"
 import teoria from 'teoria'
 import * as notesFreq from '../../constants/notesFrequencies'
@@ -8,7 +8,6 @@ import Option from "../../components/Body/ChordChanges/Option/Option";
 import { getChanges } from "../../services/Api/ChordChanges";
 
 function ChordChanges() {
-    // eslint-disable-next-line
     const [frequency, setFrequency] = useState(0)
     const [pitches, setPitches] = useState([])
     const [noteSet, setNoteSet] = useState([])
@@ -51,11 +50,11 @@ function ChordChanges() {
     }
 
     useEffect(() => {
-        // setup(setFrequency) // TODO: Uncomment
+        setup(setFrequency) 
         getChanges().then(res => {
             setSongs(res.data.data)
         })
-        // return closeChanges
+        return closeChanges
         // eslint-disable-next-line
     }, [])
 

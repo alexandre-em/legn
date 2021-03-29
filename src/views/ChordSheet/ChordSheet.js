@@ -22,7 +22,7 @@ function ChordSheet() {
     const history = useHistory()
 
     const [date, setDate] = useState('')
-
+    
 
     useEffect(() => {
         getSheetById(id).then(async data => {
@@ -35,7 +35,7 @@ function ChordSheet() {
                     setAuthor(dt.data.username)
                     setAvatar(dt.data.avatar)
                 })
-                let timestamp = Date(data.data.published_on)
+                let timestamp = new Date(data.data.published_on)
                 setDate(moment(timestamp).format('MMMM Do YYYY'))
                 setYear(data.data.year)
             }

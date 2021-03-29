@@ -1,16 +1,23 @@
-import { Button, Fab } from '@material-ui/core'
+import { Fab } from '@material-ui/core'
 import { Help } from '@material-ui/icons'
+import moment from 'moment'
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import Tuner from '../../components/Body/Home/Tuner/Tuner'
+import { logs } from '../../constants/Logs'
 import { closestValue, frequenciesBST } from '../../constants/tunerFrequencies'
 import { closeChanges, setup } from '../../services/pitchDetection'
 import './Home.css'
+
+import { ReactComponent as ReactLogo } from '../../assets/images/undraw_happy_music_g6wc.svg'
 
 function Home() {
     const [frequency, setFrequency] = useState()
     const [beginTuner, setBeginTuner] = useState(false)
     const [progress, setProgress] = useState(0)
     const [note, setNote] = useState('')
+    const [cv, setCv] = useState()
+    const user = useSelector(state => state.auth)
 
     useEffect(() => {
         if (beginTuner) {
@@ -19,31 +26,45 @@ function Home() {
         }
         // eslint-disable-next-line
     }, [])
-    
+
     useEffect(() => {
-        // const frequency = 311
-        const cv = closestValue(frequenciesBST, Math.abs(Math.floor(frequency)))
-        setProgress(Math.floor((Math.abs(Math.floor(frequency)) - cv.val.frequency) * 5.9))
-        setNote(cv.val.note)
+        if (frequency) {
+            if (cv) {
+                let prog = Math.floor((Math.abs(Math.floor(frequency)) - cv.val.frequency) * 5.9)
+                if (prog < -105 || prog > 105)
+                    setCv(closestValue(frequenciesBST, Math.abs(Math.floor(frequency))))
+                // console.log(Math.floor((Math.abs(Math.floor(frequency)) - cv.val.frequency) * 5.9))
+                setProgress(prog)
+                setNote(cv.val.note)
+            } else
+                setCv(closestValue(frequenciesBST, Math.abs(Math.floor(frequency))))
+        }
+        // eslint-disable-next-line
     }, [frequency])
 
     const handleClick = () => {
-        setBeginTuner(!beginTuner)
-        console.log(beginTuner)
-        if(!beginTuner)
-            setup(setFrequency)
+        if (!beginTuner)
+            setup(setFrequency).then(_ => setBeginTuner(!beginTuner))
         else
-            closeChanges()
+            closeChanges().then(_ => setBeginTuner(!beginTuner))
     }
 
     return (
         <div className="home">
             <div className="home__title">
-                <h1>Welcome to Leg(n) App, {'username'}</h1>
+                <h1>Welcome to Leg(n) App, {user.username}</h1>
             </div>
             <div className="home__contents">
                 <div className="home__log">
-                    <h3>Leg(n) logs</h3>
+                    <h2>Leg(n) logs</h2>
+                    <div className="logs__contents">
+                        {logs.map(log =>
+                            <p key={log.date + log.content}><b>{moment(Date.parse(log.date)).format('MMMM Do YYYY')}: </b>{log.content}</p>
+                        )}
+                    </div>
+                    <div className="logs__pic">
+                        <ReactLogo id="logs__pic"/>
+                    </div>
                 </div>
                 <Tuner note={note} progress={progress} handleClick={handleClick} beginTuner={beginTuner} />
             </div>
@@ -52,6 +73,7 @@ function Home() {
                     <Help />
                 </Fab>
             </a>
+            <p id="home__em">Made by EM</p>
         </div>
     )
 }

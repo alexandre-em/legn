@@ -14,6 +14,7 @@ const closeChanges = async () => {
     stream.getTracks().forEach((track) => {
         track.stop()
     })
+    // audioContext.close()
 }
 
 const pitchDetection = (audioContext, stream, setFrequency) => {

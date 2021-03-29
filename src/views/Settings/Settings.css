@@ -3,6 +3,7 @@
     padding: 15px;
     flex-wrap: nowrap;
     overflow: auto;
+    margin: .7%;
 }
 .settings h2 {
     margin-top: 2.5vh;
@@ -30,6 +31,11 @@
     right: 1.5%;
     bottom: 1.5%;
     background-color: #00b0ff;
+    transition: 120ms;
+}
+#settings__help:hover,
+#settings__help:focus {
+    background-color: #335d70;
 }
 #settings_avatar {
     margin-bottom: 5vh;

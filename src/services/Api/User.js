@@ -10,9 +10,10 @@ const updateUserInfo = (id, data, url) => {
     return axios.put('/user/'+id, url?user:data)
 }
 
-// TODO: check if email is valid
+// check if email is in a valid format
 const checkEmail = email => {
-    return false
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
 }
 
 const updateAvatar = (file, id, data, setIsLoading, setOpen, setProgress) => {

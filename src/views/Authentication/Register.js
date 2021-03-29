@@ -1,8 +1,9 @@
 import { CircularProgress, TextField } from '@material-ui/core'
 import { Image } from '@material-ui/icons'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { uploadAvatar, registerUser, checkInfo } from '../../services/Api/Auth'
+import { checkEmail } from '../../services/Api/User'
 import { login as loginAction } from '../../store/actions'
 
 function Register() {
@@ -11,12 +12,16 @@ function Register() {
     const [progress, setProgress] = useState(0)
     const dispatch = useDispatch()
 
-
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [fullname, setFullname] = useState('')
     const [password, setPassword] = useState('')
     const [confirmation, setConfirmation] = useState('')
+    const [isValid, setIsValid] = useState(false)
+
+    useEffect(() => {
+        setIsValid(checkEmail(email))
+    }, [email])
 
     const handleChange = (e) => {
         if (e.target.files[0])
@@ -25,7 +30,7 @@ function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (password === confirmation) {
+        if ((password === confirmation) && isValid) {
             if (file) {
                 if (progress === 0)
                     uploadAvatar(file, email, username, fullname, password, setIsLoading, setProgress, dispatch, loginAction)
@@ -48,7 +53,7 @@ function Register() {
                 <h1>Register</h1>
                 <form noValidate autoComplete="off" className="auth__form" onSubmit={handleSubmit}>
                     <div className="auth__inputs">
-                        <TextField value={email} onChange={e => setEmail(e.target.value)} label="Email" required />
+                        <TextField error={!isValid} helperText={!isValid && "email format incorrect"} value={email} onChange={e => setEmail(e.target.value)} label="Email" required />
                         <TextField value={username} onChange={e => setUsername(e.target.value)} label="Username" required />
                         <TextField value={fullname} onChange={e => setFullname(e.target.value)} label="Fullname" required />
                         <TextField

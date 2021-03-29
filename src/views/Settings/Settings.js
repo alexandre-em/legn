@@ -4,7 +4,7 @@ import { Alert } from '@material-ui/lab'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { getUserById, updateAvatar, updateUserInfo } from '../../services/Api/User'
+import { checkEmail, getUserById, updateAvatar, updateUserInfo } from '../../services/Api/User'
 import './Settings.css'
 
 function Settings() {
@@ -17,6 +17,7 @@ function Settings() {
     const [isLoading, setIsLoading] = useState(true)
     const [progress, setProgress] = useState(0)
     const [open, setOpen] = useState(false)
+    const [isValid, setIsValid] = useState(false)
 
     const uid = useSelector(state => state.auth.user_public)
 
@@ -31,6 +32,10 @@ function Settings() {
         })
     }, [uid])
 
+    useEffect(() => {
+        setIsValid(checkEmail(email))
+    }, [email])
+
     const handleChange = e => {
         if (e.target.files[0])
             setFile(e.target.files[0]);
@@ -38,7 +43,7 @@ function Settings() {
 
     const handleSubmit = e => {
         e.preventDefault()
-        if (password === confirmation) {
+        if ((password === confirmation) && isValid) {
             const data = {
                 ...(email && { email: email }),
                 ...(username && { username: username }),
@@ -52,6 +57,7 @@ function Settings() {
         }
     }
 
+    // TODO: language selection, dark mode
     return (
         <div className='settings'>
             <Snackbar open={open} autoHideDuration={6000} onClose={_ => setOpen(false)}>
@@ -63,7 +69,7 @@ function Settings() {
             <i>@demo</i>
             <form onSubmit={handleSubmit}>
                 <div className="settings__select">
-                    <TextField label="Email" value={email} onChange={e => setEmail(e.target.value)} fullWidth />
+                    <TextField error={!isValid} helperText={!isValid && "email format incorrect"} label="Email" value={email} onChange={e => setEmail(e.target.value)} fullWidth />
                 </div>
                 <div className="settings__select">
                     <TextField label="Username" value={username} onChange={e => setUsername(e.target.value)} fullWidth />

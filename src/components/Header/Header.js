@@ -28,7 +28,7 @@ function Header() {
                 <form onSubmit={handleSubmit}>
                     <input
                         type="search"
-                        placeholder="Search..."
+                        placeholder="Search for a sheet..."
                         value={search}
                         onChange={e => setSearch(e.target.value)}
                         id="header--searchbar" />

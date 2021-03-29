@@ -26,7 +26,7 @@ function Menu() {
                 </div>
                 <div className="body__micon" onClick={e => history.push('/sheets')}>
                     <MusicNote />
-                    Sheets
+                    Docs
                 </div>
                 <div className="body__micon" onClick={e => history.push('/chat')}>
                     <Chat />

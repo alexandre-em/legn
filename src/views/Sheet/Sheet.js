@@ -6,17 +6,16 @@ import { useHistory, useLocation } from 'react-router'
 import { getAllSheets } from '../../services/Api/Sheet'
 import './Sheet.css'
 import Pagination from '@material-ui/lab/Pagination';
+import { tutos } from '../../constants/tuto'
 
 function Sheet() {
     const history = useHistory()
     const search = new URLSearchParams(useLocation().search)
     const [list, setList] = useState([])
     const [total, setTotal] = useState(0)
-    const tuto = [
-        { title: "Guitar Neck", id: "123456" },
-        { title: "Scale & Intervals", id: "123456" },
-        { title: "Pentatonic Scale", id: "123456" },
-    ]
+    const tuto = Object.keys(tutos).map(key => {
+        return tutos[key]
+    })
 
     useEffect(() => {
         getAllSheets().then(data => {
@@ -31,10 +30,10 @@ function Sheet() {
                 <h2>Tutorials</h2>
             </div>
             <div className="sheets__main">
-                {tuto.map(sheet => {
-                    return <p key={sheet.title} onClick={_ => {
-                        history.push(`/sheet/${sheet.id}`)
-                    }}>{sheet.title}</p>
+                {tuto.map(tut => {
+                    return <p key={tut.id+tut.title} onClick={_ => {
+                        history.push(`/tuto/${tut.id}`)
+                    }}>{tut.title}</p>
                 })}
             </div>
             <div className="sheets__header" onClick={_ => {
@@ -48,7 +47,7 @@ function Sheet() {
             </div>
             <div className="sheets__main">
                 {list.map(sheet => {
-                    return <p key={sheet.id+sheet.author} onClick={_ => {
+                    return <p key={sheet.id + sheet.author} onClick={_ => {
                         history.push(`/sheet/${sheet.id}`)
                     }}>{sheet.title}</p>
                 })}

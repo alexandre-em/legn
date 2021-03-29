@@ -23,11 +23,12 @@
 .message__title,
 .message__title--sender {
   margin-bottom: 1.5%;
+  overflow-wrap: break-word;
+  text-overflow:clip;
 }
 .message__title--sender,
 .message__content--sender p {
-  display: flex;
-  justify-content: flex-end;
+  text-align: end;
 }
 
 .message__bulle--sender {

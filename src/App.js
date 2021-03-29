@@ -5,7 +5,7 @@ import Home from "./views/Home/Home"
 import ChordChanges from "./views/ChordChanges/ChordChanges"
 import ChordSheet from "./views/ChordSheet/ChordSheet"
 import AddSheet from "./views/AddSheet/AddSheet"
-import Scales from "./views/Scales/Scales"
+// import Scales from "./views/Scales/Scales"
 import Settings from "./views/Settings/Settings"
 import NotFound from "./views/NotFound/NotFound"
 import Header from "./components/Header/Header";
@@ -19,6 +19,7 @@ import { checkInfo } from "./services/Api/Auth";
 import { logout } from "./store/actions";
 import Chat from "./views/Chat/Chat";
 import User from "./views/User/User";
+import Tuto from "./views/Tuto/Tuto";
 
 function App() {
   const history = createBrowserHistory()
@@ -62,13 +63,11 @@ function App() {
               <Route path="/changes" component={ChordChanges} />
               <Route path="/sheets" component={Sheet} />
               <Route path="/sheet/:id" component={ChordSheet} />
+              <Route path="/tuto/:id" component={Tuto} />
               <Route path="/add" component={AddSheet} />
-              <Route path="/scales" component={Scales} />
+              {/* <Route path="/scales" component={Scales} /> */}
               <Route path="/settings" component={Settings} />
               <Route path="/search" component={SearchResult} />
-              {/* TODO */}
-              {/* Tuto page */}
-              {/* Tuner */}
               <Route path="/chat" component={Chat} />
               <Route path="/user/:uid" component={User} />
               <Route path="/register" render={() => <Redirect to="/" />} />
