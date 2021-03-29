@@ -25,19 +25,21 @@ function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (file) {
-            if (progress === 0)
-                uploadAvatar(file, email, username, fullname, password, setIsLoading, setProgress, dispatch, loginAction)
-        } else
-            registerUser(email, username, password, fullname, '')
-                .then(async data => {
-                    await checkInfo(data.data?.Authorization).then(dt => {
-                        dispatch(loginAction({ ...dt.data.data, token: data.data.Authorization }))
+        if (password === confirmation) {
+            if (file) {
+                if (progress === 0)
+                    uploadAvatar(file, email, username, fullname, password, setIsLoading, setProgress, dispatch, loginAction)
+            } else
+                registerUser(email, username, password, fullname, '')
+                    .then(async data => {
+                        await checkInfo(data.data?.Authorization).then(dt => {
+                            dispatch(loginAction({ ...dt.data.data, token: data.data.Authorization }))
+                        })
                     })
-                })
-                .catch(err => {
-                    console.log(err.response.data.message, err.response.status)
-                })
+                    .catch(err => {
+                        console.log(err.response.data.message, err.response.status)
+                    })
+        }
     }
 
     return (
@@ -58,7 +60,7 @@ function Register() {
                             required
                         />
                         <TextField
-                            error={password !== confirmation} 
+                            error={password !== confirmation}
                             helperText={password !== confirmation && "passwords do not match"}
                             value={confirmation}
                             onChange={e => setConfirmation(e.target.value)}

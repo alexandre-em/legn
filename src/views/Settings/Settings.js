@@ -15,7 +15,7 @@ function Settings() {
     const [confirmation, setConfirmation] = useState('')
     const [file, setFile] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-    const [progress, setProgress] = useState(-10)
+    const [progress, setProgress] = useState(0)
     const [open, setOpen] = useState(false)
 
     const uid = useSelector(state => state.auth.user_public)
@@ -38,16 +38,18 @@ function Settings() {
 
     const handleSubmit = e => {
         e.preventDefault()
-        const data = {
-            ...(email && { email: email }),
-            ...(username && { username: username }),
-            ...(fullName && { firstname: fullName }),
-            ...(password && { password: password }),
+        if (password === confirmation) {
+            const data = {
+                ...(email && { email: email }),
+                ...(username && { username: username }),
+                ...(fullName && { firstname: fullName }),
+                ...(password && { password: password }),
+            }
+            if (file)
+                updateAvatar(file, uid, data, setIsLoading, setOpen, setProgress)
+            else
+                updateUserInfo(uid, data).then(_ => setOpen(true))
         }
-        if (file)
-            updateAvatar(file, uid, data, setIsLoading, setOpen, setProgress)
-        else
-            updateUserInfo(uid, data).then(_ => setOpen(true))
     }
 
     return (
