@@ -39,14 +39,14 @@
 .message__content--sender {
   font-style: italic;
   font-size: 10.5pt;
-  opacity: 75%;
+  color: rgba(85, 98, 112, 0.753);
 }
 
 .message__content p,
 .message__content--sender p {
   margin-top: 10px;
   font-size: 7.5pt;
-  opacity: 40%;
+  color: rgb(85, 98, 112, 0.46);
 }
 .message__content p {
   text-align: end;

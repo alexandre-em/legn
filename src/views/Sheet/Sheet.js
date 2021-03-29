@@ -26,7 +26,7 @@ function Sheet() {
 
     return (
         <div className="sheets">
-            <div className="sheet__header tuto">
+            <div className="sheet__header">
                 <h2>Tutorials</h2>
             </div>
             <div className="sheets__main">

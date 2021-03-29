@@ -1,39 +1,39 @@
 .sheets {
-    /* width: 96%; */
-    flex: 1;
-    margin: 1%;
-    overflow: auto;
+  /* width: 96%; */
+  flex: 1;
+  margin: 1%;
+  overflow: auto;
 }
 
 .sheets__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-top: 15px;
 }
 .sheets__main {
-    text-align: justify;
-    cursor: pointer;
-    font-weight: 500;
-    padding-left: 10px ;
-    opacity: 80%;
+  text-align: justify;
+  cursor: pointer;
+  font-weight: 500;
+  padding-left: 10px;
+  color: rgb(85, 98, 112, 0.6);
 }
 .sheets__main > p:hover,
 .sheets__add:hover {
-    color: rgb(100, 143, 237);
+  color: rgb(100, 143, 237);
 }
 
 .sheets__pagination {
-    position: absolute;
-    bottom: 0;
-    right: 50%;
-    margin-bottom: 5vh;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  margin-bottom: 5vh;
 }
 
 .sheets__add {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: 210ms;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 210ms;
 }

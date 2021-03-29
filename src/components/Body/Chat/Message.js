@@ -7,7 +7,7 @@ import moment from 'moment'
 function Message({ info, public_id }) {
     const isSender = info.public_id === public_id
     const sender = isSender ? "--sender" : ""
-    const date = moment(new Date(info.create_at.toDate()).toUTCString()).format('MMM Do YYYY h:mma')
+    // const date = moment(new Date(info.create_at.toDate()).toUTCString()).format('MMM Do YYYY h:mma')
     const history = useHistory()
 
     return (
@@ -19,7 +19,7 @@ function Message({ info, public_id }) {
                 </div>
                 <div className={`message__content${sender}`}>
                     {info.text}
-                    <p>{date}</p>
+                    <p>{moment(new Date(info.create_at.toDate()).toUTCString()).format('MMM Do YYYY h:mma')}</p>
                 </div>
             </div>
             {isSender ? <Avatar src={info.avatar} id="message__touser" onClick={_ => history.push(`/user/${info.public_id}`)} />:""}
