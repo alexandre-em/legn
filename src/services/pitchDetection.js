@@ -1,6 +1,10 @@
 import * as ml5 from "ml5";
 
-const audioContext = new AudioContext();
+var AudioContext = window.AudioContext // Default
+    || window.webkitAudioContext // Safari and old versions of Chrome
+    || false;
+
+const audioContext = new AudioContext;
 let stream
 
 /** Allume le micro */
