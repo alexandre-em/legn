@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.25), rgba(0,0,0,0.5), rgba(0,0,0,.75)), url("https://firebasestorage.googleapis.com/v0/b/legn-49d5d.appspot.com/o/alexander-bennington-A2O8CUP3iUw-unsplash.jpg?alt=media&token=e9de31a2-9b86-49ae-9572-8675802d8d33");
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.25), rgba(0,0,0,0.5), rgba(0,0,0,.75)), url("https://images.unsplash.com/photo-1611262052897-865202d7ad42?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1317&q=80");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -19,7 +19,7 @@ function Message({ info, public_id }) {
                 </div>
                 <div className={`message__content${sender}`}>
                     {info.text}
-                    <p>{moment(new Date(info.create_at.toDate()).toUTCString()).format('MMM Do YYYY h:mma')}</p>
+                    <p>{moment(new Date(info.create_at?.toDate()).toUTCString()).format('MMM Do YYYY h:mma')}</p>
                 </div>
             </div>
             {isSender ? <Avatar src={info.avatar} id="message__touser" onClick={_ => history.push(`/user/${info.public_id}`)} />:""}

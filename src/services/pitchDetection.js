@@ -5,16 +5,25 @@ let stream
 
 /** Allume le micro */
 const setup = async (setFrequency) => {
-    stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+    stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+            echoCancellation: false,
+            autoGainControl: false,
+            noiseSuppression: false,
+            latency: 0
+        }, video: false
+    });
     pitchDetection(audioContext, stream, setFrequency)
 }
 
 /** Eteint le micro */
 const closeChanges = async () => {
-    stream.getTracks().forEach((track) => {
+    await stream?.getTracks().forEach((track) => {
         track.stop()
     })
-    // audioContext.close()
+    if (audioContext.state === 'running' || audioContext.state === 'suspended')
+        audioContext?.close()
+    console.log(audioContext)
 }
 
 const pitchDetection = (audioContext, stream, setFrequency) => {
@@ -24,8 +33,9 @@ const pitchDetection = (audioContext, stream, setFrequency) => {
         pitch.getPitch(getPitch)
     }
 
-    const getPitch = (error, freq) => {
-        audioContext.resume();
+    const getPitch = async (error, freq) => {
+        if (audioContext.state === 'suspended')
+            await audioContext.resume();
         if (error) {
             console.error(error);
         } else {
@@ -35,7 +45,7 @@ const pitchDetection = (audioContext, stream, setFrequency) => {
             pitch.getPitch(getPitch);
         }
     }
-    const url = process.env.REACT_APP_ENDPOINT
+    const url = 'http://localhost:3000/models/' || process.env.REACT_APP_ENDPOINT
     const pitch = ml5.pitchDetection(url, audioContext, stream, modelLoaded)
 }
 

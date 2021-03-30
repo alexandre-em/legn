@@ -19,12 +19,13 @@ function ChordChanges() {
     const [repeat, setRepeat] = useState(false)
     const [begin, setBegin] = useState(0)
     const [chords, setChords] = useState([])
+    const [indice, setIndice] = useState(0)
 
 
     const beginTest = () => {
         if (level && chordChange && order)
-            setBegin(begin+1)
-            initTest()
+            setBegin(begin + 1)
+        initTest()
     }
 
     const initTest = () => {
@@ -33,7 +34,7 @@ function ChordChanges() {
         setPitches(selectPitches(getPitches(chordParsed[0].tone), level))
         initChord()
     }
-    
+
     const initChord = () => {
         if (begin !== 0 && chords) {
             const chord = teoria.chord(chords[0].root + chords[0].tone)
@@ -50,17 +51,17 @@ function ChordChanges() {
     }
 
     useEffect(() => {
-        setup(setFrequency) 
+        setup(setFrequency)
         getChanges().then(res => {
             setSongs(res.data.data)
         })
-        return closeChanges
+        return () => closeChanges()
         // eslint-disable-next-line
     }, [])
 
 
     useEffect(() => {
-        if (begin!==0){
+        if (begin !== 0) {
             initTest()
         }
         // eslint-disable-next-line
@@ -68,19 +69,19 @@ function ChordChanges() {
 
 
     useEffect(() => {
-        if (frequency && noteSet) {
-            pitches.forEach((pitch, i) => {
-                if (noteSet[i].freqSet?.has(Math.floor(frequency))) {
-                    setPitches(pitches.map((p, j) => {
-                        if (i === j)
-                            return { pitch: pitch.pitch, found: true }
-                        return p
-                    }))
-                }
-            })
+        if (begin && frequency && noteSet) {
+            console.log(`est ce que ${noteSet[indice].freqSet?.has(Math.floor(frequency))} ou freq = ${frequency}`)
+            if (noteSet[indice].freqSet?.has(Math.floor(frequency))) {
+                let tmp = [...pitches]
+                tmp[indice] = { pitch: pitches[indice].pitch, found: true }
+                setPitches(tmp)
+                if (indice < pitches.length - 1)
+                    setIndice(indice + 1)
+            }
         }
-        if (begin && pitches && pitches.reduce((acc, val) => acc && val.found)){
+        if (begin && pitches && pitches[pitches.length - 1].found) {
             setPitches(selectPitches(getPitches(chords[1].tone), level))
+            setIndice(0)
             chords.shift()
             initChord()
         }
@@ -95,7 +96,7 @@ function ChordChanges() {
 
     return (
         <div className="cc">
-            {begin!==0 ? <div className="cc__main">
+            {begin !== 0 ? <div className="cc__main">
                 <h3>{songs[chordChange].songname}</h3>
                 <div className="main__current">
                     <h1>{chords[0]?.root}<sup>{chords[0]?.tone}</sup></h1>
